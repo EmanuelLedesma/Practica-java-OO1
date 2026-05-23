@@ -21,11 +21,18 @@ public class Sistema {
 		int i = 0;
 		while(encontrado == null && i < lstCategorias.size()) {
 			if(lstCategorias.get(i).getNombre().equals(nombre)) {
-				encontrado= lstCategorias.get(i);
+				encontrado = lstCategorias.get(i);
 			}
 			i++;
 		}
 		return encontrado;
+	}
+	
+
+	
+	public boolean agregarCategoria(String nombre){
+		Categoria categoria = new Categoria(nombre);
+		return lstCategorias.add(categoria);
 	}
 	
 	
