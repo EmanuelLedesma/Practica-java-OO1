@@ -18,18 +18,7 @@ public class  ProductoPerecedero extends Producto {
 	public int hashCode() {
 		return Objects.hash(fechaVencimiento, Boolean.valueOf(requiereRefrigeracion));
 	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		ProductoPerecedero other = (ProductoPerecedero) obj;
-		return Objects.equals(fechaVencimiento, other.fechaVencimiento)
-				&& requiereRefrigeracion == other.requiereRefrigeracion;
-	}
+
 	
 	
 	public LocalDate getFechaVencimiento() {
@@ -43,6 +32,11 @@ public class  ProductoPerecedero extends Producto {
 	}
 	public void setRequiereRefrigeracion(boolean requiereRefrigeracion) {
 		this.requiereRefrigeracion = requiereRefrigeracion;
+	}
+
+	@Override
+	public boolean esNecesarioReabastecer() {
+		return this.fechaVencimiento.isBefore(LocalDate.now().plusDays(20));
 	}
 	
 	

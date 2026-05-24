@@ -3,7 +3,7 @@ package modelo;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class MovimientoIventario {
+public class MovimientoInventario {
 	private int idMovimientoInventario;
 	private Producto producto;
 	private LocalDate fecha;
@@ -11,7 +11,7 @@ public class MovimientoIventario {
 	
 	
 	
-	public MovimientoIventario(int idMovimientoInventario, Producto producto, LocalDate fecha, int cantidad) {
+	public MovimientoInventario(int idMovimientoInventario, Producto producto, LocalDate fecha, int cantidad) {
 		super();
 		this.idMovimientoInventario = idMovimientoInventario;
 		this.producto = producto;
@@ -19,6 +19,12 @@ public class MovimientoIventario {
 		this.cantidad = cantidad;
 	}
 	
+	@Override
+	public String toString() {
+		return "MovimientoInventario [idMovimientoInventario=" + idMovimientoInventario + ", producto=" + producto
+				+ ", fecha=" + fecha + ", cantidad=" + cantidad + "]";
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(Integer.valueOf(cantidad), fecha, Integer.valueOf(idMovimientoInventario), producto);
@@ -31,7 +37,7 @@ public class MovimientoIventario {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		MovimientoIventario other = (MovimientoIventario) obj;
+		MovimientoInventario other = (MovimientoInventario) obj;
 		return cantidad == other.cantidad && Objects.equals(fecha, other.fecha)
 				&& idMovimientoInventario == other.idMovimientoInventario && Objects.equals(producto, other.producto);
 	}

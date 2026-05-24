@@ -1,6 +1,7 @@
 package modelo;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.Objects;
 
 public class Persona {
@@ -62,18 +63,8 @@ public class Persona {
 	}
 	
 	public int calcularEdad(LocalDate fecha) {
-		int edad = fecha.getYear() - fechaDeNacimiento.getYear();
-		
-		if (fecha.getMonthValue() < fechaDeNacimiento.getMonthValue() || 
-	       (fecha.getMonthValue() == fechaDeNacimiento.getMonthValue() && fecha.getDayOfMonth() < fechaDeNacimiento.getDayOfMonth())) {
-	        
-	        // Como no cumplió, le restamos 1 como pide el examen
-	        edad = edad - 1; 
-	    }
-	    
-	    // Si ya cumplió, el if se ignora y devuelve la edad base intacta
-	    return edad;
-	}
+        return Period.between(fechaDeNacimiento, fecha).getYears();
+    }
 																					
 	public boolean isEsArgentino() {
 		return esArgentino;

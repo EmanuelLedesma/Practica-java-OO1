@@ -9,6 +9,7 @@ public abstract class Producto {
 	protected float precio;
 	protected Categoria categoria;
 	protected int cantidadDisponible;
+	
 	public int getIdProducto() {
 		return idProducto;
 	}
@@ -24,7 +25,14 @@ public abstract class Producto {
 		this.cantidadDisponible = cantidadDisponible;
 	}
 
+
 	
+
+	@Override
+	public String toString() {
+		return "Producto [idProducto=" + idProducto + ", codigo=" + codigo + ", nombre=" + nombre + ", precio=" + precio
+				+ ", categoria=" + categoria + ", cantidadDisponible=" + cantidadDisponible + "]";
+	}
 
 	@Override
 	public int hashCode() {
@@ -84,5 +92,6 @@ public abstract class Producto {
 		this.cantidadDisponible = cantidadDisponible;
 	}
 	
+	public abstract boolean esNecesarioReabastecer();
 	
 }

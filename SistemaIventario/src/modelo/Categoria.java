@@ -7,6 +7,11 @@ public class Categoria {
 	
 	
 
+	@Override
+	public String toString() {
+		return "Categoria [nombre=" + nombre + "]";
+	}
+
 	public Categoria(String nombre) {
 		super();
 		this.nombre = nombre;
