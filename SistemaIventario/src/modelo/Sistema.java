@@ -57,21 +57,16 @@ public class Sistema {
 		List<MovimientoInventario> listaFiltrada = new ArrayList<MovimientoInventario>();
 		
 		for(MovimientoInventario o:lstMovimientos) {
-			if(o.getProducto() instanceof ProductoPerecedero producto) {
-//				if((((ProductoPerecedero)o.getProducto() ).isRequiereRefrigeracion() == true) 
-//					&& fecha.isEqual(o.getFecha())) {
-//					listaFiltrada.add(o);
-//				}
-				// Producto ProductoPerecedero = (ProductoPerecedero) producto
-				if(producto.isRequiereRefrigeracion()==true && fecha.isEqual(o.getFecha())) {
-					listaFiltrada.add(o);
+				if(o.getFecha().isEqual(fecha)
+						&& o.getCantidad()<0
+						&& o.getProducto() instanceof ProductoPerecedero
+						&& ((ProductoPerecedero) o.getProducto()).isRequiereRefrigeracion()) {
+					listaFiltrada.add(o);	
 				}
-				
 			}
-		}
 		return listaFiltrada;
 	}
-	
+
 	public List<Producto> traerProductosAReabastecer(Categoria categoria){
 		List<Producto> listaFiltrada = new ArrayList<Producto>();
 		
