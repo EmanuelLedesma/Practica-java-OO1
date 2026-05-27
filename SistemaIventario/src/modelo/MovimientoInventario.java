@@ -18,6 +18,7 @@ public class MovimientoInventario {
 		this.fecha = fecha;
 		this.cantidad = cantidad;
 	}
+
 	
 	@Override
 	public String toString() {
