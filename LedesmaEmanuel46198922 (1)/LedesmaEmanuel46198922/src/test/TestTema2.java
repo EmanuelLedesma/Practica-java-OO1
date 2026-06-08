@@ -57,6 +57,14 @@ public class TestTema2 {
 		System.out.println("6)");
 		System.out.println("Recaudacion (Uruguay 2026-5-26): "+ s.calcularRecaudacion(LocalDate.of(2026, 5, 26), "Uruguay"));
 		
+		System.out.println("\n");
+		
+		System.out.println("8---------Validar Codigo Tracking");
+		String cod1 = "CP473124829AR"; // Ejemplo válido
+		String cod2 = "EE123456785R";  // Ejemplo inválido (longitud)
+		
+		System.out.println("Es valido " + cod1 + "?: " + s.validarCodigoTracking(cod1));
+		System.out.println("Es valido " + cod2 + "?: " + s.validarCodigoTracking(cod2));
 		
 	}
 

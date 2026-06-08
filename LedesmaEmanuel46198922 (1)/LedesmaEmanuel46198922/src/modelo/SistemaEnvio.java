@@ -191,11 +191,27 @@ public class SistemaEnvio {
 		return total;
 	}
 	
-	//public boolean validarCodigoTracking(String codigoTracking){
-		//los envios tienen un codigo de seguimiento que tiene el formato: xx123456789
-		//las dos primeras letras indican el tipo de envio y las ultimas dos el pais en donde se despacho el envio
-		//el novenonumero es el digito verificador
-		//se calcular: codigo : CP473234829AR 47312482 es el codigonumerico 9 es el verificador
-//	}
-	
+	public boolean validarCodigoTracking(String codigo) {
+	    // 1. Validar longitud total (13 caracteres)
+	    if (codigo == null || codigo.length() != 13) return false;
+
+	    // 2. Validar formato (XX + 8 números + 1 verificador + YY)
+	    for (int i = 0; i < 2; i++) if (!Character.isLetter(codigo.charAt(i))) return false;
+	    for (int i = 11; i < 13; i++) if (!Character.isLetter(codigo.charAt(i))) return false;
+	    for (int i = 2; i < 11; i++) if (!Character.isDigit(codigo.charAt(i))) return false;
+
+	    // 3. Validar dígito verificador
+	    int digitoCapturado = Character.getNumericValue(codigo.charAt(10));
+	    int suma = 0;
+	    for (int i = 2; i < 10; i++) {
+	        suma += Character.getNumericValue(codigo.charAt(i));
+	    }
+	    
+	    // Ajuste: 10 - (suma % 10). 
+	    // Si la suma es 31, 31%10 = 1, y 10-1 = 9. ¡Coincide con tu ejemplo!
+	    int digitoCalculado = 10 - (suma % 10);
+	    if (digitoCalculado == 10) digitoCalculado = 0; // Caso especial si la suma es múltiplo de 10
+	    
+	    return digitoCapturado == digitoCalculado;
+	}
 }
